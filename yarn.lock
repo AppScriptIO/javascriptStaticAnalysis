@@ -90,6 +90,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
+"@dependency/addModuleResolutionPath@https://github.com/AppScriptIO/addModuleResolutionPath":
+  version "1.0.0"
+  resolved "https://github.com/AppScriptIO/addModuleResolutionPath#b3ce76e82dfaf04bed939b110c523b248c33daeb"
+
 "@typescript-eslint/eslint-plugin@^1.4.2":
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-1.4.2.tgz#370bc32022d1cc884a5dcf62624ef2024182769d"

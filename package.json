@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "scripts": {},
   "dependencies": {
+    "@dependency/addModuleResolutionPath": "https://github.com/AppScriptIO/addModuleResolutionPath",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
     "babel-eslint": "^10.0.1",
