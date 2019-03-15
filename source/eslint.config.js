@@ -3,8 +3,8 @@ let prettierTypescriptEslint = require('eslint-config-prettier/@typescript-eslin
 let prettierConfig = require('./prettier.config.js')
 
 module.exports = ({
-  babelConfigPath = './babel.config.js',
-  typescriptConfigPath = './typescript.config.json'
+  babelConfigPath = './configuration/babel.config.js',
+  typescriptConfigPath = './configuration/typescript.config.json'
 } = {}) => {
   return {
     root: true,
@@ -44,7 +44,7 @@ module.exports = ({
         parserOptions: {
           ecmaVersion: 2018,
           sourceType: 'module',
-          project: typescriptConfigPath // should be consumed by a function and replaced.
+          project: typescriptConfigPath // Follows the path should be consumed by a function and replaced.
         },
         plugins: ['@typescript-eslint/eslint-plugin', 'prettier'],
         rules: Object.assign(
@@ -52,7 +52,7 @@ module.exports = ({
           prettierTypescriptEslint.rules, // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
           // prettier Eslint Recommended are `prettier` plugin and `error` rule // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
           {
-            'prettier/prettier': 'error',
+            'prettier/prettier': 'warn',
           },
         ),
       },
