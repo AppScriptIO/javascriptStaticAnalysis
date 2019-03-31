@@ -15,7 +15,10 @@
     "prettier": "^1.16.4",
     "typescript": "^3.3.3333"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@dependency/javascriptTranspilation": "https://github.com/AppScriptIO/javascriptTranspilation",
+    "typescript": "^3.3.3333"
+  },
   "workspaces": [],
   "private": true
 }
