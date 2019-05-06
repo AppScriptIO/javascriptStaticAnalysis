@@ -1,6 +1,6 @@
 {
   "name": "@dependency/javascriptStaticAnalysis",
-  "main": "./source/entrypoint.js",
+  "main": "./entrypoint/programmaticAPI",
   "version": "1.0.0",
   "scripts": {},
   "dependencies": {
@@ -19,7 +19,7 @@
     "@babel/core": "*"
   },
   "devDependencies": {
-    "@dependency/javascriptTranspilation": "https://github.com/AppScriptIO/javascriptTranspilation",
+    "@dependency/javascriptTranspilation": "https://github.com/AppScriptIO/javascriptTranspilation#semver:^1.x.x",
     "typescript": "^3.3.3333"
   },
   "workspaces": [],
