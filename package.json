@@ -1,10 +1,10 @@
 {
   "name": "@dependency/javascriptStaticAnalysis",
   "main": "./entrypoint/programmaticAPI",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {},
   "dependencies": {
-    "@dependency/addModuleResolutionPath": "https://github.com/AppScriptIO/addModuleResolutionPath",
+    "@dependency/addModuleResolutionPath": "https://github.com/AppScriptIO/addModuleResolutionPath#semver:^1.x.x",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
     "babel-eslint": "next",
