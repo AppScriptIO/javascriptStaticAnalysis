@@ -1,13 +1,13 @@
-const   path = require('path'),
-        { addModuleResolutionPathMultiple } = require(`@dependency/addModuleResolutionPath`)
-let eslintJSLinterFunc = require('./eslint.config.js')
-let prettierJSFormatter = require('./prettier.config.js')
+"use strict";const path = require('path'),
+{ addModuleResolutionPathMultiple } = require(`@dependency/addModuleResolutionPath`);
+let eslintJSLinterFunc = require('./eslint.config.js');
+let prettierJSFormatter = require('./prettier.config.js');
 
 module.exports = {
   initialize: () => {
-    const nodeModulesPath = path.dirname(path.dirname(path.dirname( require.resolve('eslint/package.json') ))) // get the node_modules folder where plugins are installed. Could be own package root or parent packages root (when this modules is installed as a pacakge)
-    addModuleResolutionPathMultiple({ pathArray: [ nodeModulesPath ] }) // Add own node_modules to module resolving paths
-  }, 
+    const nodeModulesPath = path.dirname(path.dirname(path.dirname(require.resolve('eslint/package.json'))));
+    addModuleResolutionPathMultiple({ pathArray: [nodeModulesPath] });
+  },
   eslintJSLinterFunc,
-  prettierJSFormatter
-} 
+  prettierJSFormatter };
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NvdXJjZS9zY3JpcHQuanMiXSwibmFtZXMiOlsicGF0aCIsInJlcXVpcmUiLCJhZGRNb2R1bGVSZXNvbHV0aW9uUGF0aE11bHRpcGxlIiwiZXNsaW50SlNMaW50ZXJGdW5jIiwicHJldHRpZXJKU0Zvcm1hdHRlciIsIm1vZHVsZSIsImV4cG9ydHMiLCJpbml0aWFsaXplIiwibm9kZU1vZHVsZXNQYXRoIiwiZGlybmFtZSIsInJlc29sdmUiLCJwYXRoQXJyYXkiXSwibWFwcGluZ3MiOiJhQUFBLE1BQVFBLElBQUksR0FBR0MsT0FBTyxDQUFDLE1BQUQsQ0FBdEI7QUFDUSxFQUFFQywrQkFBRixLQUFzQ0QsT0FBTyxDQUFFLHFDQUFGLENBRHJEO0FBRUEsSUFBSUUsa0JBQWtCLEdBQUdGLE9BQU8sQ0FBQyxvQkFBRCxDQUFoQztBQUNBLElBQUlHLG1CQUFtQixHQUFHSCxPQUFPLENBQUMsc0JBQUQsQ0FBakM7O0FBRUFJLE1BQU0sQ0FBQ0MsT0FBUCxHQUFpQjtBQUNmQyxFQUFBQSxVQUFVLEVBQUUsTUFBTTtBQUNoQixVQUFNQyxlQUFlLEdBQUdSLElBQUksQ0FBQ1MsT0FBTCxDQUFhVCxJQUFJLENBQUNTLE9BQUwsQ0FBYVQsSUFBSSxDQUFDUyxPQUFMLENBQWNSLE9BQU8sQ0FBQ1MsT0FBUixDQUFnQixxQkFBaEIsQ0FBZCxDQUFiLENBQWIsQ0FBeEI7QUFDQVIsSUFBQUEsK0JBQStCLENBQUMsRUFBRVMsU0FBUyxFQUFFLENBQUVILGVBQUYsQ0FBYixFQUFELENBQS9CO0FBQ0QsR0FKYztBQUtmTCxFQUFBQSxrQkFMZTtBQU1mQyxFQUFBQSxtQkFOZSxFQUFqQiIsInNvdXJjZXNDb250ZW50IjpbImNvbnN0ICAgcGF0aCA9IHJlcXVpcmUoJ3BhdGgnKSxcbiAgICAgICAgeyBhZGRNb2R1bGVSZXNvbHV0aW9uUGF0aE11bHRpcGxlIH0gPSByZXF1aXJlKGBAZGVwZW5kZW5jeS9hZGRNb2R1bGVSZXNvbHV0aW9uUGF0aGApXG5sZXQgZXNsaW50SlNMaW50ZXJGdW5jID0gcmVxdWlyZSgnLi9lc2xpbnQuY29uZmlnLmpzJylcbmxldCBwcmV0dGllckpTRm9ybWF0dGVyID0gcmVxdWlyZSgnLi9wcmV0dGllci5jb25maWcuanMnKVxuXG5tb2R1bGUuZXhwb3J0cyA9IHtcbiAgaW5pdGlhbGl6ZTogKCkgPT4ge1xuICAgIGNvbnN0IG5vZGVNb2R1bGVzUGF0aCA9IHBhdGguZGlybmFtZShwYXRoLmRpcm5hbWUocGF0aC5kaXJuYW1lKCByZXF1aXJlLnJlc29sdmUoJ2VzbGludC9wYWNrYWdlLmpzb24nKSApKSkgLy8gZ2V0IHRoZSBub2RlX21vZHVsZXMgZm9sZGVyIHdoZXJlIHBsdWdpbnMgYXJlIGluc3RhbGxlZC4gQ291bGQgYmUgb3duIHBhY2thZ2Ugcm9vdCBvciBwYXJlbnQgcGFja2FnZXMgcm9vdCAod2hlbiB0aGlzIG1vZHVsZXMgaXMgaW5zdGFsbGVkIGFzIGEgcGFjYWtnZSlcbiAgICBhZGRNb2R1bGVSZXNvbHV0aW9uUGF0aE11bHRpcGxlKHsgcGF0aEFycmF5OiBbIG5vZGVNb2R1bGVzUGF0aCBdIH0pIC8vIEFkZCBvd24gbm9kZV9tb2R1bGVzIHRvIG1vZHVsZSByZXNvbHZpbmcgcGF0aHNcbiAgfSwgXG4gIGVzbGludEpTTGludGVyRnVuYyxcbiAgcHJldHRpZXJKU0Zvcm1hdHRlclxufSBcbiJdfQ==

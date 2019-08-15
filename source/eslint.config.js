@@ -1,65 +1,66 @@
-let typescriptEslintRecommended = require('@typescript-eslint/eslint-plugin/dist/configs/recommended.json')
-let prettierTypescriptEslint = require('eslint-config-prettier/@typescript-eslint')
-let prettierConfig = require('./prettier.config.js')
+"use strict";let typescriptEslintRecommended = require('@typescript-eslint/eslint-plugin/dist/configs/recommended.json');
+let prettierTypescriptEslint = require('eslint-config-prettier/@typescript-eslint');
+let prettierConfig = require('./prettier.config.js');
 
 module.exports = ({
   babelConfigPath = './configuration/babel.config.js',
-  typescriptConfigPath = './configuration/typescript.config.json'
-} = {}) => {
+  typescriptConfigPath = './configuration/typescript.config.json' } =
+{}) => {
   return {
     root: true,
     overrides: [
-      // { // NOTE: Using VSCode builtin formatter instead
-      //   files: ['**.json', '**.jsonc'],
-      //   plugins: ['eslint-plugin-json'],
-      // },
-      // specific different parser according to file extension.
+
+
+
+
+
+    {
+      files: ['**.js'],
+
+      parser: 'babel-eslint',
+      parserOptions: {
+        babelOptions: {
+          configFile: babelConfigPath } },
+
+
+      plugins: [
+      'eslint-plugin-babel',
+      'prettier'],
+
+      rules: {
+        'prettier/prettier': [
+        'warn',
+        prettierConfig,
+        {
+          usePrettierrc: true }] } },
+
+
+
+
+    {
+      files: ['**.ts'],
+
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        ecmaVersion: 2018,
+        sourceType: 'module',
+        project: typescriptConfigPath },
+
+      plugins: ['@typescript-eslint/eslint-plugin', 'prettier'],
+      rules: Object.assign(
+      typescriptEslintRecommended.rules,
+      prettierTypescriptEslint.rules,
+
       {
-        files: ['**.js'],
-        // "excludedFiles": "*.test.js",
-        parser: 'babel-eslint',
-        parserOptions: {
-          babelOptions: {
-            configFile: babelConfigPath,
-          },
-        },
-        plugins: [
-          'eslint-plugin-babel', // eslint-plugin-babel re-implements (from the base eslint rules) problematic rules so they do not give false positives or negatives
-          'prettier',
-        ],
-        rules: {
-          'prettier/prettier': [
-            'warn',
-            prettierConfig,
-            {
-              usePrettierrc: true,
-            },
-          ],
-        },
-      },
-      {
-        files: ['**.ts'],
-        // correctly parse typescript with babel parser - https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/typescript-estree/tests/ast-alignment/parse.ts#L16
-        parser: '@typescript-eslint/parser',
-        parserOptions: {
-          ecmaVersion: 2018,
-          sourceType: 'module',
-          project: typescriptConfigPath // Follows the path should be consumed by a function and replaced.
-        },
-        plugins: ['@typescript-eslint/eslint-plugin', 'prettier'],
-        rules: Object.assign(
-          typescriptEslintRecommended.rules,
-          prettierTypescriptEslint.rules, // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
-          // prettier Eslint Recommended are `prettier` plugin and `error` rule // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
-          {
-            'prettier/prettier': 'warn',
-          },
-        ),
-      },
-    ],
+        'prettier/prettier': 'warn' }) }],
+
+
+
+
     rules: {},
     env: {
-      node: true,
-    },
-  }
-}
+      node: true } };
+
+
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NvdXJjZS9lc2xpbnQuY29uZmlnLmpzIl0sIm5hbWVzIjpbInR5cGVzY3JpcHRFc2xpbnRSZWNvbW1lbmRlZCIsInJlcXVpcmUiLCJwcmV0dGllclR5cGVzY3JpcHRFc2xpbnQiLCJwcmV0dGllckNvbmZpZyIsIm1vZHVsZSIsImV4cG9ydHMiLCJiYWJlbENvbmZpZ1BhdGgiLCJ0eXBlc2NyaXB0Q29uZmlnUGF0aCIsInJvb3QiLCJvdmVycmlkZXMiLCJmaWxlcyIsInBhcnNlciIsInBhcnNlck9wdGlvbnMiLCJiYWJlbE9wdGlvbnMiLCJjb25maWdGaWxlIiwicGx1Z2lucyIsInJ1bGVzIiwidXNlUHJldHRpZXJyYyIsImVjbWFWZXJzaW9uIiwic291cmNlVHlwZSIsInByb2plY3QiLCJPYmplY3QiLCJhc3NpZ24iLCJlbnYiLCJub2RlIl0sIm1hcHBpbmdzIjoiYUFBQSxJQUFJQSwyQkFBMkIsR0FBR0MsT0FBTyxDQUFDLGdFQUFELENBQXpDO0FBQ0EsSUFBSUMsd0JBQXdCLEdBQUdELE9BQU8sQ0FBQywyQ0FBRCxDQUF0QztBQUNBLElBQUlFLGNBQWMsR0FBR0YsT0FBTyxDQUFDLHNCQUFELENBQTVCOztBQUVBRyxNQUFNLENBQUNDLE9BQVAsR0FBaUIsQ0FBQztBQUNoQkMsRUFBQUEsZUFBZSxHQUFHLGlDQURGO0FBRWhCQyxFQUFBQSxvQkFBb0IsR0FBRyx3Q0FGUDtBQUdkLEVBSGEsS0FHTjtBQUNULFNBQU87QUFDTEMsSUFBQUEsSUFBSSxFQUFFLElBREQ7QUFFTEMsSUFBQUEsU0FBUyxFQUFFOzs7Ozs7QUFNVDtBQUNFQyxNQUFBQSxLQUFLLEVBQUUsQ0FBQyxPQUFELENBRFQ7O0FBR0VDLE1BQUFBLE1BQU0sRUFBRSxjQUhWO0FBSUVDLE1BQUFBLGFBQWEsRUFBRTtBQUNiQyxRQUFBQSxZQUFZLEVBQUU7QUFDWkMsVUFBQUEsVUFBVSxFQUFFUixlQURBLEVBREQsRUFKakI7OztBQVNFUyxNQUFBQSxPQUFPLEVBQUU7QUFDUCwyQkFETztBQUVQLGdCQUZPLENBVFg7O0FBYUVDLE1BQUFBLEtBQUssRUFBRTtBQUNMLDZCQUFxQjtBQUNuQixjQURtQjtBQUVuQmIsUUFBQUEsY0FGbUI7QUFHbkI7QUFDRWMsVUFBQUEsYUFBYSxFQUFFLElBRGpCLEVBSG1CLENBRGhCLEVBYlQsRUFOUzs7Ozs7QUE2QlQ7QUFDRVAsTUFBQUEsS0FBSyxFQUFFLENBQUMsT0FBRCxDQURUOztBQUdFQyxNQUFBQSxNQUFNLEVBQUUsMkJBSFY7QUFJRUMsTUFBQUEsYUFBYSxFQUFFO0FBQ2JNLFFBQUFBLFdBQVcsRUFBRSxJQURBO0FBRWJDLFFBQUFBLFVBQVUsRUFBRSxRQUZDO0FBR2JDLFFBQUFBLE9BQU8sRUFBRWIsb0JBSEksRUFKakI7O0FBU0VRLE1BQUFBLE9BQU8sRUFBRSxDQUFDLGtDQUFELEVBQXFDLFVBQXJDLENBVFg7QUFVRUMsTUFBQUEsS0FBSyxFQUFFSyxNQUFNLENBQUNDLE1BQVA7QUFDTHRCLE1BQUFBLDJCQUEyQixDQUFDZ0IsS0FEdkI7QUFFTGQsTUFBQUEsd0JBQXdCLENBQUNjLEtBRnBCOztBQUlMO0FBQ0UsNkJBQXFCLE1BRHZCLEVBSkssQ0FWVCxFQTdCUyxDQUZOOzs7OztBQW1ETEEsSUFBQUEsS0FBSyxFQUFFLEVBbkRGO0FBb0RMTyxJQUFBQSxHQUFHLEVBQUU7QUFDSEMsTUFBQUEsSUFBSSxFQUFFLElBREgsRUFwREEsRUFBUDs7O0FBd0RELENBNUREIiwic291cmNlc0NvbnRlbnQiOlsibGV0IHR5cGVzY3JpcHRFc2xpbnRSZWNvbW1lbmRlZCA9IHJlcXVpcmUoJ0B0eXBlc2NyaXB0LWVzbGludC9lc2xpbnQtcGx1Z2luL2Rpc3QvY29uZmlncy9yZWNvbW1lbmRlZC5qc29uJylcclxubGV0IHByZXR0aWVyVHlwZXNjcmlwdEVzbGludCA9IHJlcXVpcmUoJ2VzbGludC1jb25maWctcHJldHRpZXIvQHR5cGVzY3JpcHQtZXNsaW50JylcclxubGV0IHByZXR0aWVyQ29uZmlnID0gcmVxdWlyZSgnLi9wcmV0dGllci5jb25maWcuanMnKVxyXG5cclxubW9kdWxlLmV4cG9ydHMgPSAoe1xyXG4gIGJhYmVsQ29uZmlnUGF0aCA9ICcuL2NvbmZpZ3VyYXRpb24vYmFiZWwuY29uZmlnLmpzJyxcclxuICB0eXBlc2NyaXB0Q29uZmlnUGF0aCA9ICcuL2NvbmZpZ3VyYXRpb24vdHlwZXNjcmlwdC5jb25maWcuanNvbidcclxufSA9IHt9KSA9PiB7XHJcbiAgcmV0dXJuIHtcclxuICAgIHJvb3Q6IHRydWUsXHJcbiAgICBvdmVycmlkZXM6IFtcclxuICAgICAgLy8geyAvLyBOT1RFOiBVc2luZyBWU0NvZGUgYnVpbHRpbiBmb3JtYXR0ZXIgaW5zdGVhZFxyXG4gICAgICAvLyAgIGZpbGVzOiBbJyoqLmpzb24nLCAnKiouanNvbmMnXSxcclxuICAgICAgLy8gICBwbHVnaW5zOiBbJ2VzbGludC1wbHVnaW4tanNvbiddLFxyXG4gICAgICAvLyB9LFxyXG4gICAgICAvLyBzcGVjaWZpYyBkaWZmZXJlbnQgcGFyc2VyIGFjY29yZGluZyB0byBmaWxlIGV4dGVuc2lvbi5cclxuICAgICAge1xyXG4gICAgICAgIGZpbGVzOiBbJyoqLmpzJ10sXHJcbiAgICAgICAgLy8gXCJleGNsdWRlZEZpbGVzXCI6IFwiKi50ZXN0LmpzXCIsXHJcbiAgICAgICAgcGFyc2VyOiAnYmFiZWwtZXNsaW50JyxcclxuICAgICAgICBwYXJzZXJPcHRpb25zOiB7XHJcbiAgICAgICAgICBiYWJlbE9wdGlvbnM6IHtcclxuICAgICAgICAgICAgY29uZmlnRmlsZTogYmFiZWxDb25maWdQYXRoLFxyXG4gICAgICAgICAgfSxcclxuICAgICAgICB9LFxyXG4gICAgICAgIHBsdWdpbnM6IFtcclxuICAgICAgICAgICdlc2xpbnQtcGx1Z2luLWJhYmVsJywgLy8gZXNsaW50LXBsdWdpbi1iYWJlbCByZS1pbXBsZW1lbnRzIChmcm9tIHRoZSBiYXNlIGVzbGludCBydWxlcykgcHJvYmxlbWF0aWMgcnVsZXMgc28gdGhleSBkbyBub3QgZ2l2ZSBmYWxzZSBwb3NpdGl2ZXMgb3IgbmVnYXRpdmVzXHJcbiAgICAgICAgICAncHJldHRpZXInLFxyXG4gICAgICAgIF0sXHJcbiAgICAgICAgcnVsZXM6IHtcclxuICAgICAgICAgICdwcmV0dGllci9wcmV0dGllcic6IFtcclxuICAgICAgICAgICAgJ3dhcm4nLFxyXG4gICAgICAgICAgICBwcmV0dGllckNvbmZpZyxcclxuICAgICAgICAgICAge1xyXG4gICAgICAgICAgICAgIHVzZVByZXR0aWVycmM6IHRydWUsXHJcbiAgICAgICAgICAgIH0sXHJcbiAgICAgICAgICBdLFxyXG4gICAgICAgIH0sXHJcbiAgICAgIH0sXHJcbiAgICAgIHtcclxuICAgICAgICBmaWxlczogWycqKi50cyddLFxyXG4gICAgICAgIC8vIGNvcnJlY3RseSBwYXJzZSB0eXBlc2NyaXB0IHdpdGggYmFiZWwgcGFyc2VyIC0gaHR0cHM6Ly9naXRodWIuY29tL3R5cGVzY3JpcHQtZXNsaW50L3R5cGVzY3JpcHQtZXNsaW50L2Jsb2IvbWFzdGVyL3BhY2thZ2VzL3R5cGVzY3JpcHQtZXN0cmVlL3Rlc3RzL2FzdC1hbGlnbm1lbnQvcGFyc2UudHMjTDE2XHJcbiAgICAgICAgcGFyc2VyOiAnQHR5cGVzY3JpcHQtZXNsaW50L3BhcnNlcicsXHJcbiAgICAgICAgcGFyc2VyT3B0aW9uczoge1xyXG4gICAgICAgICAgZWNtYVZlcnNpb246IDIwMTgsXHJcbiAgICAgICAgICBzb3VyY2VUeXBlOiAnbW9kdWxlJyxcclxuICAgICAgICAgIHByb2plY3Q6IHR5cGVzY3JpcHRDb25maWdQYXRoIC8vIEZvbGxvd3MgdGhlIHBhdGggc2hvdWxkIGJlIGNvbnN1bWVkIGJ5IGEgZnVuY3Rpb24gYW5kIHJlcGxhY2VkLlxyXG4gICAgICAgIH0sXHJcbiAgICAgICAgcGx1Z2luczogWydAdHlwZXNjcmlwdC1lc2xpbnQvZXNsaW50LXBsdWdpbicsICdwcmV0dGllciddLFxyXG4gICAgICAgIHJ1bGVzOiBPYmplY3QuYXNzaWduKFxyXG4gICAgICAgICAgdHlwZXNjcmlwdEVzbGludFJlY29tbWVuZGVkLnJ1bGVzLFxyXG4gICAgICAgICAgcHJldHRpZXJUeXBlc2NyaXB0RXNsaW50LnJ1bGVzLCAvLyBVc2VzIGVzbGludC1jb25maWctcHJldHRpZXIgdG8gZGlzYWJsZSBFU0xpbnQgcnVsZXMgZnJvbSBAdHlwZXNjcmlwdC1lc2xpbnQvZXNsaW50LXBsdWdpbiB0aGF0IHdvdWxkIGNvbmZsaWN0IHdpdGggcHJldHRpZXJcclxuICAgICAgICAgIC8vIHByZXR0aWVyIEVzbGludCBSZWNvbW1lbmRlZCBhcmUgYHByZXR0aWVyYCBwbHVnaW4gYW5kIGBlcnJvcmAgcnVsZSAvLyBFbmFibGVzIGVzbGludC1wbHVnaW4tcHJldHRpZXIgYW5kIGRpc3BsYXlzIHByZXR0aWVyIGVycm9ycyBhcyBFU0xpbnQgZXJyb3JzLiBNYWtlIHN1cmUgdGhpcyBpcyBhbHdheXMgdGhlIGxhc3QgY29uZmlndXJhdGlvbiBpbiB0aGUgZXh0ZW5kcyBhcnJheS5cclxuICAgICAgICAgIHtcclxuICAgICAgICAgICAgJ3ByZXR0aWVyL3ByZXR0aWVyJzogJ3dhcm4nLFxyXG4gICAgICAgICAgfSxcclxuICAgICAgICApLFxyXG4gICAgICB9LFxyXG4gICAgXSxcclxuICAgIHJ1bGVzOiB7fSxcclxuICAgIGVudjoge1xyXG4gICAgICBub2RlOiB0cnVlLFxyXG4gICAgfSxcclxuICB9XHJcbn1cclxuIl19
