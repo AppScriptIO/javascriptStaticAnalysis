@@ -1,10 +1,10 @@
 {
 	"name": "@dependency/javascriptStaticAnalysis",
 	"main": "./entrypoint/programmaticAPI",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"scripts": {
 		"build": "yarn run scriptManager shouldCompileScript=true @dependency/deploymentScript \".buildSourceCode.moduleProject({}, {compile:[/**'./test'*/]})\"",
-		"buildAndRelease": "yarn run scriptManager shouldCompileScript=true @dependency/deploymentScript \".buildAndRelease.moduleProject({})\"",
+		"buildAndRelease": "yarn run scriptManager shouldCompileScript=true @dependency/deploymentScript \".buildAndRelease.moduleProject({})\""
 	},
 	"dependencies": {
 		"@dependency/handleModuleSystem": "https://github.com/AppScriptIO/handleModuleSystem#semver:^2.x.x",

@@ -52,6 +52,7 @@
     "typescript.check.npmIsInstalled": false,
     "workbench.colorCustomizations": {
         "activityBar.background": "#a529c0",
+        "activityBar.activeBorder": "#b89e27",
         "activityBar.foreground": "#e7e7e7",
         "activityBar.inactiveForeground": "#e7e7e799",
         "activityBarBadge.background": "#b89e27",
