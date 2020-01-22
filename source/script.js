@@ -1,5 +1,5 @@
 const   path = require('path'),
-        { addModuleResolutionPathMultiple } = require(`@dependency/addModuleResolutionPath`)
+        { addModuleResolutionPathMultiple } = require(`@dependency/handleModuleSystem`)
 let eslintJSLinterFunc = require('./eslint.config.js')
 let prettierJSFormatter = require('./prettier.config.js')
 
