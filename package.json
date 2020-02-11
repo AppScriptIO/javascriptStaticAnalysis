@@ -1,13 +1,15 @@
 {
 	"name": "@deployment/javascriptStaticAnalysis",
 	"main": "./entrypoint/programmaticAPI",
-	"version": "2.0.1",
+	"version": "2.1.0",
 	"scripts": {
 		"build": "yarn run scriptManager shouldCompileScript=true @deployment/deploymentScript \".buildSourceCode.moduleProject({}, {compile:[/**'./test'*/]})\"",
 		"buildAndRelease": "yarn run scriptManager shouldCompileScript=true @deployment/deploymentScript \".buildAndRelease.moduleProject({})\""
 	},
 	"dependencies": {
 		"@dependency/handleModuleSystem": "https://github.com/AppScriptIO/handleModuleSystem#semver:^2.x.x",
+		"@open-wc/eslint-config": "^2.0.3",
+		"@open-wc/prettier-config": "^0.1.14",
 		"@typescript-eslint/eslint-plugin": "^1.4.2",
 		"@typescript-eslint/parser": "^1.4.2",
 		"babel-eslint": "next",
@@ -23,8 +25,8 @@
 	},
 	"devDependencies": {
 		"@deployment/deploymentScript": "https://github.com/AppScriptIO/deploymentScript#semver:^2.x.x",
-		"@deployment/javascriptTranspilation": "https://github.com/AppScriptIO/javascriptTranspilation#semver:^2.x.x",
 		"@deployment/javascriptStaticAnalysis": "https://github.com/AppScriptIO/javascriptStaticAnalysis#semver:^2.x.x",
+		"@deployment/javascriptTranspilation": "https://github.com/AppScriptIO/javascriptTranspilation#semver:^2.x.x",
 		"@deployment/scriptManager": "https://github.com/AppScriptIO/scriptManager#semver:^2.x.x",
 		"typescript": "^3.3.3333"
 	}
