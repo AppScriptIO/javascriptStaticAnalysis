@@ -1,4 +1,5 @@
-const { registerPluginPathToRequireHook } = require('./requireHook.js')
+const path = require('path'), 
+      { registerPluginPathToRequireHook } = require('./requireHook.js')
 
 module.exports.nodejsEnvironment = ({ babelConfigPath = './configuration/babel.config.js', typescriptConfigPath = './configuration/typescript.config.json', shouldRegisterModulePath = true } = {}) => {
   if(shouldRegisterModulePath) registerPluginPathToRequireHook()
@@ -27,6 +28,7 @@ module.exports.nodejsEnvironment = ({ babelConfigPath = './configuration/babel.c
       'prettier',
     ],
     rules: {
+      // add prettier integration
       'prettier/prettier': [
         'warn',
         prettierConfig,
@@ -49,6 +51,7 @@ module.exports.nodejsEnvironment = ({ babelConfigPath = './configuration/babel.c
     plugins: ['@typescript-eslint/eslint-plugin', 'prettier'],
     rules: Object.assign(
       typescriptEslintRecommended.rules,
+      // add prettier integration
       prettierTypescriptEslint.rules, // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
       // prettier Eslint Recommended are `prettier` plugin and `error` rule // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
       {
@@ -79,7 +82,10 @@ module.exports.nodejsEnvironment = ({ babelConfigPath = './configuration/babel.c
 }
 
 module.exports.browserEnvironment = ({ shouldRegisterModulePath = true } = {}) => {
-  if(shouldRegisterModulePath) registerPluginPathToRequireHook()
+  if(shouldRegisterModulePath) registerPluginPathToRequireHook({
+    // !important: should add plugins path to require hook, as these are referenced relative to the target project's eslint.config.js file.
+    additionalNodeModulePath: [path.join(path.dirname(require.resolve('@open-wc/eslint-config/package.json')), 'node_modules')]
+  })
 
   /*
   *https://github.com/open-wc/open-wc/blob/master/packages/prettier-config/prettier.config.js
@@ -102,30 +108,25 @@ module.exports.browserEnvironment = ({ shouldRegisterModulePath = true } = {}) =
     Do not prefer no file extension
 
   USAGE: 
-    • require directly and make sure internal plugin names are resolved correctly (./@open-wc/eslint-config/node_modules/<plugins...>) 
+    • require directly and make sure internal plugin names are resolved correctly (./@open-wc/eslint-config/node_modules/<plugins...>), as it will be referenced by the location of the target project's esling config file (<target project>/configuration/eslint.config.js)
   OR
-    • use eslint config: (which may resolve dependent plugins correctly) https://github.com/open-wc/open-wc/blob/master/packages/eslint-config/package.json
+    • use eslint config: (make sure to add node_modules to require path to resolve plugins correctly) https://github.com/open-wc/open-wc/blob/master/packages/eslint-config/package.json
       "@open-wc/eslint-config",
       "eslint-config-prettier"
 
   */
-  // let openWebcomponentEslintConfig = require('@open-wc/eslint-config') // https://github.com/open-wc/open-wc/ > eslint-config
+  let openWebcomponentEslintConfig = require('@open-wc/eslint-config') // https://github.com/open-wc/open-wc/ > eslint-config
 
-  let eslintConfig = {
-    extends: [       
-      "@open-wc/eslint-config",
-      "eslint-config-prettier"
-    ], 
-    rules: {
-      'prettier/prettier': [
-        'warn',
-        prettierConfig,
-        {
-          usePrettierrc: true,
-        },
-      ],
+  let eslintConfig = openWebcomponentEslintConfig
+
+  // add prettier integration
+  eslintConfig.rules['prettier/prettier'] = [
+    'warn',
+    prettierConfig,
+    {
+      usePrettierrc: true,
     },
-  } 
+  ]
 
   console.log(`• ESlint config used:`)
   console.log(eslintConfig)
