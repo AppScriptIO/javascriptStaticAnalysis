@@ -1,4 +1,8 @@
-module.exports.nodejsEnvironment = ({ babelConfigPath = './configuration/babel.config.js', typescriptConfigPath = './configuration/typescript.config.json' } = {}) => {
+const { registerPluginPathToRequireHook } = require('./requireHook.js')
+
+module.exports.nodejsEnvironment = ({ babelConfigPath = './configuration/babel.config.js', typescriptConfigPath = './configuration/typescript.config.json', shouldRegisterModulePath = true } = {}) => {
+  if(shouldRegisterModulePath) registerPluginPathToRequireHook()
+
   let typescriptEslintRecommended = require('@typescript-eslint/eslint-plugin/dist/configs/recommended.json')
   let prettierTypescriptEslint = require('eslint-config-prettier/@typescript-eslint')
   let prettierConfig = require('./prettier.config.js')
@@ -74,7 +78,9 @@ module.exports.nodejsEnvironment = ({ babelConfigPath = './configuration/babel.c
   return eslintConfig
 }
 
-module.exports.browserEnvironment = () => {  
+module.exports.browserEnvironment = ({ shouldRegisterModulePath = true } = {}) => {
+  if(shouldRegisterModulePath) registerPluginPathToRequireHook()
+
   /*
   *https://github.com/open-wc/open-wc/blob/master/packages/prettier-config/prettier.config.js
     Apply formatting to JS files
@@ -103,7 +109,7 @@ module.exports.browserEnvironment = () => {
       "eslint-config-prettier"
 
   */
-  let openWebcomponentEslintConfig = require('@open-wc/eslint-config') // https://github.com/open-wc/open-wc/ > eslint-config
+  // let openWebcomponentEslintConfig = require('@open-wc/eslint-config') // https://github.com/open-wc/open-wc/ > eslint-config
 
   let eslintConfig = {
     extends: [       
