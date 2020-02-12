@@ -75,13 +75,14 @@ module.exports.nodejsEnvironment = ({ babelConfigPath = './configuration/babel.c
     },
   }
 
-  console.log(`• ESlint config used:`)
-  console.log(eslintConfig)
+  // debug in vscode eslint extention (open: VScode OUTPUT > ESLint)
+  // console.log(`• ESlint config used:`)
+  // console.log(eslintConfig)
 
   return eslintConfig
 }
 
-module.exports.browserEnvironment = ({ shouldRegisterModulePath = true } = {}) => {
+module.exports.browserEnvironment = ({ babelConfigPath = './configuration/babel.config.js', shouldRegisterModulePath = true } = {}) => {
   if(shouldRegisterModulePath) registerPluginPathToRequireHook({
     // !important: should add plugins path to require hook, as these are referenced relative to the target project's eslint.config.js file.
     additionalNodeModulePath: [path.join(path.dirname(require.resolve('@open-wc/eslint-config/package.json')), 'node_modules')]
@@ -119,6 +120,13 @@ module.exports.browserEnvironment = ({ shouldRegisterModulePath = true } = {}) =
 
   let eslintConfig = openWebcomponentEslintConfig
 
+  // set babel configuration location.
+  eslintConfig.parserOptions = {
+    babelOptions: {
+      configFile: babelConfigPath,
+    },
+  }
+
   // add prettier integration
   eslintConfig.rules['prettier/prettier'] = [
     'warn',
@@ -128,8 +136,9 @@ module.exports.browserEnvironment = ({ shouldRegisterModulePath = true } = {}) =
     },
   ]
 
-  console.log(`• ESlint config used:`)
-  console.log(eslintConfig)
+  // debug in vscode eslint extention (open: VScode OUTPUT > ESLint)
+  // console.log(`• ESlint config used:`)
+  // console.log(eslintConfig)
 
   return eslintConfig
 }
