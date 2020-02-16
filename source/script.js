@@ -1,7 +1,7 @@
-const eslintJSLinter = require('./eslint.config.js'), 
-  prettierJSFormatter = require('./prettier.config.js')
+"use strict";const eslintJSLinter = require('./eslint.config.js'),
+prettierJSFormatter = require('./prettier.config.js');
 
 module.exports = {
-  prettierJSFormatter, // prettier is being integrated from within eslint config.
-  eslintJSLinter,
-}
+  prettierJSFormatter,
+  eslintJSLinter };
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NvdXJjZS9zY3JpcHQuanMiXSwibmFtZXMiOlsiZXNsaW50SlNMaW50ZXIiLCJyZXF1aXJlIiwicHJldHRpZXJKU0Zvcm1hdHRlciIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiJhQUFBLE1BQU1BLGNBQWMsR0FBR0MsT0FBTyxDQUFDLG9CQUFELENBQTlCO0FBQ0VDLG1CQUFtQixHQUFHRCxPQUFPLENBQUMsc0JBQUQsQ0FEL0I7O0FBR0FFLE1BQU0sQ0FBQ0MsT0FBUCxHQUFpQjtBQUNmRixFQUFBQSxtQkFEZTtBQUVmRixFQUFBQSxjQUZlLEVBQWpCIiwic291cmNlc0NvbnRlbnQiOlsiY29uc3QgZXNsaW50SlNMaW50ZXIgPSByZXF1aXJlKCcuL2VzbGludC5jb25maWcuanMnKSwgXG4gIHByZXR0aWVySlNGb3JtYXR0ZXIgPSByZXF1aXJlKCcuL3ByZXR0aWVyLmNvbmZpZy5qcycpXG5cbm1vZHVsZS5leHBvcnRzID0ge1xuICBwcmV0dGllckpTRm9ybWF0dGVyLCAvLyBwcmV0dGllciBpcyBiZWluZyBpbnRlZ3JhdGVkIGZyb20gd2l0aGluIGVzbGludCBjb25maWcuXG4gIGVzbGludEpTTGludGVyLFxufVxuIl19

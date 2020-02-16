@@ -1,7 +1,7 @@
-module.exports = {
+"use strict";module.exports = {
   semi: false,
   trailingComma: 'all',
   singleQuote: true,
   printWidth: 200,
-  tabWidth: 2,
-}
+  tabWidth: 2 };
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NvdXJjZS9wcmV0dGllci5jb25maWcuanMiXSwibmFtZXMiOlsibW9kdWxlIiwiZXhwb3J0cyIsInNlbWkiLCJ0cmFpbGluZ0NvbW1hIiwic2luZ2xlUXVvdGUiLCJwcmludFdpZHRoIiwidGFiV2lkdGgiXSwibWFwcGluZ3MiOiJhQUFBQSxNQUFNLENBQUNDLE9BQVAsR0FBaUI7QUFDZkMsRUFBQUEsSUFBSSxFQUFFLEtBRFM7QUFFZkMsRUFBQUEsYUFBYSxFQUFFLEtBRkE7QUFHZkMsRUFBQUEsV0FBVyxFQUFFLElBSEU7QUFJZkMsRUFBQUEsVUFBVSxFQUFFLEdBSkc7QUFLZkMsRUFBQUEsUUFBUSxFQUFFLENBTEssRUFBakIiLCJzb3VyY2VzQ29udGVudCI6WyJtb2R1bGUuZXhwb3J0cyA9IHtcbiAgc2VtaTogZmFsc2UsXG4gIHRyYWlsaW5nQ29tbWE6ICdhbGwnLFxuICBzaW5nbGVRdW90ZTogdHJ1ZSxcbiAgcHJpbnRXaWR0aDogMjAwLFxuICB0YWJXaWR0aDogMixcbn1cbiJdfQ==
